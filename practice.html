@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Qwizset | Skill Assessment</title>
+
+    <link rel="stylesheet" href="practice.css" />
+  </head>
+
+  <body>
+    <!-- Exam Header -->
+    <header class="exam-header">
+      <div class="header-brand">
+        <a href="index.html" class="back-home" aria-label="Back to Home">
+          <span class="back-arrow">←</span>
+          <img src="assets/icons/home-icon.svg" alt="" class="home-icon"
+          />
+          <span class="back-label">Back to Home</span>
+        </a>
+
+        <div class="logo">
+          <img src="assets/icons/qwizset-logo.svg" alt="" />
+          <span>Qwizset</span>
+        </div>
+      </div>
+
+      <div class="exam-title">
+        <h2 id="assessment-title">Skill Assessment</h2>
+        <p id="assessment-subtitle">
+          Test your knowledge and review your results
+        </p>
+      </div>
+
+      <div class="exam-status">
+        <span class="status-dot"></span>
+        <span>Assessment</span>
+      </div>
+    </header>
+
+    <!-- Assessment Content -->
+    <main class="exam-container">
+      <section class="question-panel" id="assessment-panel">
+        <div id="setup-screen">
+          <div class="question-info">
+            <span>GET STARTED</span>
+            <span>SKILL ASSESSMENT</span>
+          </div>
+          <h2 class="question-text" id="setup-title">
+            Choose a skill to assess
+          </h2>
+          <p class="setup-description" id="setup-description">
+            Select one of the available skill areas. You will answer five
+            questions and receive your score with explanations at the end.
+          </p>
+          <div class="skill-select-list" id="skill-select-list"></div>
+          <div class="question-actions">
+            <a
+              class="next-btn start-assessment-btn"
+              id="start-assessment"
+              href="#"
+              >Start Assessment</a
+            >
+          </div>
+        </div>
+
+        <div id="question-screen" hidden>
+          <div class="question-info">
+            <span>QUESTION <span id="question-progress">1/5</span></span>
+            <span id="skill-label">Skill: Web Development</span>
+          </div>
+          <h2 class="question-text" id="question-text"></h2>
+          <div class="options-container" id="options-container"></div>
+          <div class="question-actions">
+            <button class="previous-btn" id="previous-question" type="button">
+              Previous
+            </button>
+            <button class="next-btn" id="next-question" type="button">
+              Next Question
+            </button>
+          </div>
+        </div>
+
+        <div id="results-screen" hidden>
+          <div class="question-info">
+            <span>ASSESSMENT COMPLETE</span>
+            <span id="result-skill-label"></span>
+          </div>
+          <h2 class="question-text" id="result-heading">Your Results</h2>
+          <div class="result-summary">
+            <p class="result-score" id="result-score"></p>
+            <p id="result-message"></p>
+          </div>
+          <div id="answer-review"></div>
+          <div class="question-actions">
+            <a class="previous-btn" href="index.html#courses">Explore Skills</a>
+            <button class="next-btn" id="retake-assessment" type="button">
+              Retake Assessment
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <aside class="exam-sidebar" id="exam-sidebar" hidden>
+        <div class="timer-card">
+          <span>TIME REMAINING</span>
+          <h2 id="timer">10:00</h2>
+        </div>
+        <div class="question-navigation">
+          <h3>Question Navigation</h3>
+          <p>Choose a question to answer.</p>
+          <div class="question-numbers" id="question-numbers"></div>
+          <div class="question-legend">
+            <span><i class="current-dot"></i> Current</span>
+            <span><i class="answered-dot"></i> Answered</span>
+            <span><i class="unanswered-dot"></i> Unanswered</span>
+          </div>
+        </div>
+        <button class="submit-btn" id="submit-assessment" type="button">
+          Submit Assessment
+        </button>
+      </aside>
+    </main>
+
+    <script src="practice.js"></script>
+  </body>
+</html>

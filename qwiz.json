@@ -1,0 +1,337 @@
+{
+  "web-development": {
+    "title": "Web Development",
+    "description": "HTML, CSS and JavaScript fundamentals",
+    "durationMinutes": 5,
+    "questions": [
+      {
+        "id": "web-1",
+        "question": "Which HTML element is used for the largest standard heading?",
+        "options": [
+          "<h6>",
+          "<heading>",
+          "<h1>",
+          "<head>"
+        ],
+        "answer": 2,
+        "explanation": "<h1> represents the highest-level heading. <head> contains document metadata, not visible page headings."
+      },
+      {
+        "id": "web-2",
+        "question": "Which CSS property changes the text colour of an element?",
+        "options": [
+          "font-style",
+          "color",
+          "background-color",
+          "text-decoration"
+        ],
+        "answer": 1,
+        "explanation": "The color property sets the foreground text colour. background-color changes the element's background."
+      },
+      {
+        "id": "web-3",
+        "question": "What does CSS Flexbox primarily help you do?",
+        "options": [
+          "Store data in a browser",
+          "Arrange items in a layout",
+          "Create database tables",
+          "Validate form submissions"
+        ],
+        "answer": 1,
+        "explanation": "Flexbox is a CSS layout model for arranging and distributing space among items in a container."
+      },
+      {
+        "id": "web-4",
+        "question": "Which JavaScript keyword declares a block-scoped variable that can be reassigned?",
+        "options": [
+          "const",
+          "var only",
+          "let",
+          "static"
+        ],
+        "answer": 2,
+        "explanation": "let declares a block-scoped variable that can be reassigned. const is also block-scoped but cannot be reassigned."
+      },
+      {
+        "id": "web-5",
+        "question": "Which JavaScript method selects the first element matching a CSS selector?",
+        "options": [
+          "document.querySelector()",
+          "document.getAll()",
+          "document.createElement()",
+          "document.writeSelector()"
+        ],
+        "answer": 0,
+        "explanation": "document.querySelector() returns the first element that matches the supplied CSS selector."
+      }
+    ]
+  },
+  "digital-marketing": {
+    "title": "Digital Marketing",
+    "description": "Content, audiences and online campaign fundamentals",
+    "durationMinutes": 5,
+    "questions": [
+      {
+        "id": "marketing-1",
+        "question": "What is the main purpose of identifying a target audience?",
+        "options": [
+          "To reach people most likely to need the offer",
+          "To make every post go viral",
+          "To avoid measuring campaign results",
+          "To use the same message for everyone"
+        ],
+        "answer": 0,
+        "explanation": "A target audience is the group most likely to be interested in a product, service or message. Understanding it helps shape relevant communication."
+      },
+      {
+        "id": "marketing-2",
+        "question": "What does a call to action (CTA) encourage an audience to do?",
+        "options": [
+          "Ignore the content",
+          "Take a specific next step",
+          "Change the website colours",
+          "Stop following the brand"
+        ],
+        "answer": 1,
+        "explanation": "A CTA prompts a specific action, such as signing up, learning more or making a purchase."
+      },
+      {
+        "id": "marketing-3",
+        "question": "Which metric measures the percentage of people who clicked a link after seeing it?",
+        "options": [
+          "Bounce rate",
+          "Click-through rate",
+          "Page load time",
+          "Follower count"
+        ],
+        "answer": 1,
+        "explanation": "Click-through rate (CTR) is the proportion of impressions that resulted in clicks."
+      },
+      {
+        "id": "marketing-4",
+        "question": "Why should a business keep its brand message consistent across platforms?",
+        "options": [
+          "To confuse its audience",
+          "To make every platform identical in format",
+          "To help audiences recognise and understand the brand",
+          "To avoid responding to customers"
+        ],
+        "answer": 2,
+        "explanation": "Consistent messaging strengthens recognition and makes the brand's value and personality clearer across channels."
+      },
+      {
+        "id": "marketing-5",
+        "question": "What is content marketing mainly intended to do?",
+        "options": [
+          "Provide useful or relevant content to attract and engage an audience",
+          "Publish unrelated posts as often as possible",
+          "Replace every customer support channel",
+          "Guarantee immediate sales"
+        ],
+        "answer": 0,
+        "explanation": "Content marketing uses relevant, useful content to attract and engage a defined audience and support business goals over time."
+      }
+    ]
+  },
+  "ui-ux-design": {
+    "title": "UI/UX Design",
+    "description": "User interfaces, usability and design thinking",
+    "durationMinutes": 5,
+    "questions": [
+      {
+        "id": "design-1",
+        "question": "What does UI stand for in digital product design?",
+        "options": [
+          "User Interaction",
+          "User Interface",
+          "Unified Internet",
+          "Universal Illustration"
+        ],
+        "answer": 1,
+        "explanation": "UI means User Interface: the visual and interactive parts of a digital product that people use."
+      },
+      {
+        "id": "design-2",
+        "question": "What is a primary goal of UX design?",
+        "options": [
+          "Make the product difficult to navigate",
+          "Improve the user's overall experience",
+          "Use as many colours as possible",
+          "Remove all user feedback"
+        ],
+        "answer": 1,
+        "explanation": "UX design focuses on making a product useful, usable and satisfying for the people using it."
+      },
+      {
+        "id": "design-3",
+        "question": "What is a wireframe commonly used for?",
+        "options": [
+          "Planning a page's structure before detailed visual design",
+          "Compressing image files",
+          "Writing server-side code",
+          "Tracking website visitors"
+        ],
+        "answer": 0,
+        "explanation": "A wireframe is a simplified representation of a screen's structure and content layout."
+      },
+      {
+        "id": "design-4",
+        "question": "Which practice helps check whether users can complete tasks successfully?",
+        "options": [
+          "User testing",
+          "Changing the logo repeatedly",
+          "Adding more animations",
+          "Choosing colours without feedback"
+        ],
+        "answer": 0,
+        "explanation": "Usability testing observes people attempting tasks and helps identify problems in the design."
+      },
+      {
+        "id": "design-5",
+        "question": "What does accessibility in interface design aim to achieve?",
+        "options": [
+          "Make products usable by people with a range of abilities",
+          "Restrict access to experienced users",
+          "Use smaller text on every screen",
+          "Remove keyboard navigation"
+        ],
+        "answer": 0,
+        "explanation": "Accessible design considers different abilities and ways of interacting so more people can use the product."
+      }
+    ]
+  },
+  "cybersecurity": {
+    "title": "Cybersecurity",
+    "description": "Online safety and security awareness",
+    "durationMinutes": 10,
+    "questions": [
+      {
+        "id": "cyber-1",
+        "question": "What is phishing?",
+        "options": [
+          "A method of backing up files",
+          "A deceptive attempt to obtain sensitive information",
+          "A way to improve internet speed",
+          "A type of computer monitor"
+        ],
+        "answer": 1,
+        "explanation": "Phishing uses deceptive messages or websites to trick people into revealing information or taking unsafe actions."
+      },
+      {
+        "id": "cyber-2",
+        "question": "Which password is generally the strongest?",
+        "options": [
+          "password123",
+          "vivian2026",
+          "12345678",
+          "A long, unique passphrase with varied characters"
+        ],
+        "answer": 3,
+        "explanation": "Long, unique passwords or passphrases are harder to guess. Reusing passwords increases risk if one account is compromised."
+      },
+      {
+        "id": "cyber-3",
+        "question": "Why is multi-factor authentication useful?",
+        "options": [
+          "It adds another verification step beyond a password",
+          "It removes the need for passwords everywhere",
+          "It makes devices immune to malware",
+          "It shares login details with trusted contacts"
+        ],
+        "answer": 0,
+        "explanation": "Multi-factor authentication requires an additional factor, making account access harder with only a stolen password."
+      },
+      {
+        "id": "cyber-4",
+        "question": "What should you do if an unexpected email asks you to urgently confirm your bank password through a link?",
+        "options": [
+          "Click immediately",
+          "Reply with the password",
+          "Avoid the link and verify through the bank's official channel",
+          "Forward it to everyone"
+        ],
+        "answer": 2,
+        "explanation": "Urgency and requests for passwords are warning signs. Verify independently using a known official channel."
+      },
+      {
+        "id": "cyber-5",
+        "question": "What is the purpose of installing security updates?",
+        "options": [
+          "To fix known vulnerabilities and improve software security",
+          "To make all online activity anonymous",
+          "To guarantee that no attack can happen",
+          "To remove the need for backups"
+        ],
+        "answer": 0,
+        "explanation": "Security updates often patch vulnerabilities that attackers could otherwise exploit."
+      }
+    ]
+  },
+  "data-analysis": {
+    "title": "Data Analysis",
+    "description": "Data interpretation and analytical fundamentals",
+    "durationMinutes": 10,
+    "questions": [
+      {
+        "id": "data-1",
+        "question": "What is the median of the numbers 2, 4, 7, 9 and 12?",
+        "options": [
+          "4",
+          "7",
+          "8",
+          "9"
+        ],
+        "answer": 1,
+        "explanation": "The values are already in order. With five values, the middle (third) value is 7."
+      },
+      {
+        "id": "data-2",
+        "question": "Which chart is commonly useful for comparing values across categories?",
+        "options": [
+          "Bar chart",
+          "Scatter plot only",
+          "Network diagram",
+          "Flowchart"
+        ],
+        "answer": 0,
+        "explanation": "A bar chart makes it easy to compare quantities across distinct categories."
+      },
+      {
+        "id": "data-3",
+        "question": "A dataset contains 20 records, and 5 are marked complete. What percentage are complete?",
+        "options": [
+          "5%",
+          "20%",
+          "25%",
+          "40%"
+        ],
+        "answer": 2,
+        "explanation": "5 out of 20 is 5 ÷ 20 = 0.25, which is 25%."
+      },
+      {
+        "id": "data-4",
+        "question": "Why is data cleaning performed before analysis?",
+        "options": [
+          "To introduce more missing values",
+          "To identify and correct errors or inconsistencies",
+          "To make every value identical",
+          "To guarantee a particular conclusion"
+        ],
+        "answer": 1,
+        "explanation": "Data cleaning addresses issues such as duplicates, inconsistent formats and missing or inaccurate values so analysis is more reliable."
+      },
+      {
+        "id": "data-5",
+        "question": "In a spreadsheet, what does the formula =SUM(A1:A5) do?",
+        "options": [
+          "Counts empty cells",
+          "Adds the values from A1 through A5",
+          "Finds the largest value",
+          "Sorts the cells alphabetically"
+        ],
+        "answer": 1,
+        "explanation": "SUM adds the numeric values in the specified range, including A1 and A5."
+      }
+    ]
+  }
+}

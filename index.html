@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Qwizset | Assess. Improve. Grow.</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="nav-container">
+        <a href="#home" class="logo">
+          <img src="assets/icons/qwizset-logo.svg" alt="Qwizset logo" />
+          <span>Qwizset</span>
+        </a>
+
+        <nav class="nav-links" id="nav-links">
+          <a href="#home">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="m3 10 9-7 9 7" />
+              <path d="M5 9v11h14V9M9 20v-6h6v6" />
+            </svg>
+            <span>Home</span>
+          </a>
+          <a href="#features">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="9" />
+              <path d="M12 11v5m0-8h.01" />
+            </svg>
+            <span>About</span>
+          </a>
+          <a href="#how-it-works">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M9 6h11M9 12h11M9 18h11" />
+              <path d="m3 6 1 1 2-2m-3 7 1 1 2-2m-3 7 1 1 2-2" />
+            </svg>
+            <span>How It Works</span>
+          </a>
+          <a href="#contact">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="5" width="18" height="14" rx="2" />
+              <path d="m3 7 9 6 9-6" />
+            </svg>
+            <span>Contact</span>
+          </a>
+        </nav>
+
+        <div class="nav-actions">
+          <a href="#" class="login-btn">Log In</a>
+          <a href="practice.html" class="signup-btn">Get Started</a>
+        </div>
+
+        <button
+          class="menu-toggle"
+          aria-label="Open navigation menu"
+          aria-expanded="false"
+          aria-controls="nav-links"
+        >
+          <img src="assets/icons/hamburger-menu.svg" class="menu-icon" alt="" />
+          <img src="assets/icons/close-menu.svg" class="close-menu" alt="" />
+        </button>
+      </div>
+    </header>
+
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <span class="hero-tag">BUILD SKILLS. MEASURE GROWTH.</span>
+
+        <h1>Know Your Skills. <span>Measure Your Growth.</span></h1>
+
+        <p>
+          Prepare smarter for your exams with interactive CBT practice. Test
+          your knowledge, track your progress and build confidence.
+        </p>
+
+        <div class="hero-buttons">
+          <a href="practice.html" class="primary-btn">Take an Assessment</a>
+          <a href="#courses" class="secondary-btn">Explore Skills</a>
+        </div>
+      </div>
+
+      <div class="hero-image">
+        <img
+          src="assets/images/hero-image.jpg"
+          alt="University student studying with a laptop"
+        />
+      </div>
+    </section>
+    <section class="features" id="features">
+      <div class="section-heading">
+        <span>WHY QWIZSET?</span>
+        <h2>A Better Way to Assess Your Skills</h2>
+        <p>Build confidence by checking your knowledge and understanding where to grow.</p>
+      </div>
+
+      <div class="features-container">
+        <div class="feature-card">
+          <img src="assets/icons/clock-icon.svg" alt="" />
+          <h3>Timed Assessments</h3>
+          <p>
+            Practice under real exam conditions and improve your time
+            management.
+          </p>
+        </div> 
+
+        <div class="feature-card">
+          <img src="assets/icons/chart.svg" alt="" />
+          <h3>Track Your Progress</h3>
+          <p>
+            Understand your performance and identify areas where you need to
+            improve.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <img src="assets/icons/trophy.svg" alt="" />
+          <h3>Build Confidence</h3>
+          <p>
+            Strengthen your knowledge through consistent practice and
+            assessment.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS SECTION -->
+    <section class="courses" id="courses">
+      <div class="section-heading">
+        <span>EXPLORE YOUR FIELD</span>
+        <h2>Explore Skills That Match Your Goals</h2>
+        <p>
+          Choose your field of study and practice with questions tailored to
+          your academic journey.
+        </p>
+      </div>
+
+      <div class="courses-container">
+        <div class="course-card">
+          <h3>Web Development</h3>
+          <p>Test your understanding of HTML, CSS and JavaScript.</p>
+          <a href="practice.html?skill=web-development">Explore Skill →</a>
+        </div>
+        <div class="course-card">
+          <h3>Digital Marketing</h3>
+          <p>Explore content, audiences and online marketing basics.</p>
+          <a href="practice.html?skill=digital-marketing">Explore Skill →</a>
+        </div>
+        <div class="course-card">
+          <h3>UI/UX Design</h3>
+          <p>Assess your knowledge of usability and interface design.</p>
+          <a href="practice.html?skill=ui-ux-design">Explore Skill →</a>
+        </div>
+        <div class="course-card">
+          <h3>Cybersecurity</h3>
+          <p>Check your understanding of online safety and security.</p>
+          <a href="practice.html?skill=cybersecurity">Explore Skill →</a>
+        </div>
+        <div class="course-card">
+          <h3>Data Analysis</h3>
+          <p>Practise interpreting data and working with information.</p>
+          <a href="practice.html?skill=data-analysis">Explore Skill →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS SECTION -->
+    <section class="how-it-works" id="how-it-works">
+      <div class="section-heading">
+        <span>GETTING STARTED</span>
+        <h2>How Qwizset Works</h2>
+        <p>Three simple steps to assess your knowledge and learn from your results.</p>
+      </div>
+
+      <div class="steps-container">
+        <div class="step-card">
+          <div class="step-number">01</div>
+          <h3>Choose a Skill</h3>
+          <p>
+            Select the courses you want to practice and get ready to test your
+            knowledge.
+          </p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">02</div>
+          <h3>Take Your Assessment</h3>
+          <p>
+            Answer questions in a timed CBT environment that helps you prepare
+            for real exams.
+          </p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">03</div>
+          <h3>Review Your Results</h3>
+          <p>
+            See your score, evaluate your performance and identify areas for
+            improvement.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA SECTION -->
+    <section class="cta-section" id="contact">
+      <div class="cta-content">
+        <span>YOUR NEXT STEP STARTS HERE</span>
+
+        <h2>Ready to Put Your Skills to the Test?</h2>
+
+        <p>
+          Start practicing today, challenge yourself and take another step
+          towards achieving your academic goals.
+        </p>
+
+        <a href="practice.html" class="cta-btn">Start Practicing</a>
+      </div>
+    </section>
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-brand">
+          <a href="#home" class="logo">
+            <img src="assets/icons/qwizset-logo.svg" alt="" />
+            <span>Qwizset</span>
+          </a>
+
+          <p>
+            Prepare smarter, practice confidently and take the next step towards
+            academic success.
+          </p>
+        </div>
+
+        <div class="footer-links">
+          <h3>Quick Links</h3>
+          <a href="#home">Home</a>
+          <a href="#features">About</a>
+          <a href="#how-it-works">How It Works</a>
+          <a href="#contact">Contact</a>
+        </div>
+
+        <div class="footer-links">
+          <h3>Get Started</h3>
+          <a href="practice.html">Take an Assessment</a>
+          <a href="#courses">Explore Skills</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Qwizset. All rights reserved.</p>
+
+        <div class="social-links">
+          <a href="#" aria-label="Instagram">
+            <img src="assets/icons/instagram.png" alt="" />
+          </a>
+
+          <a href="#" aria-label="Facebook">
+            <img src="assets/icons/facebook.png" alt="" />
+          </a>
+
+          <a href="#" aria-label="X">
+            <img src="assets/icons/x.png" alt="" />
+          </a>
+
+          <a href="#" aria-label="LinkedIn">
+            <img src="assets/icons/linkedin.png" alt="" />
+          </a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
