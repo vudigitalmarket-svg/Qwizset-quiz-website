@@ -1,10 +1,15 @@
 // QWIZSET SKILL ASSESSMENT
 const setupScreen = document.querySelector("#setup-screen");
 const questionScreen = document.querySelector("#question-screen");
+const reviewScreen = document.querySelector("#review-screen");
 const resultsScreen = document.querySelector("#results-screen");
 const skillSelectList = document.querySelector("#skill-select-list");
 const startButton = document.querySelector("#start-assessment");
 const examSidebar = document.querySelector("#exam-sidebar");
+const reviewSummary = document.querySelector("#review-summary");
+const reviewQuestionList = document.querySelector("#review-question-list");
+const reviewBackButton = document.querySelector("#review-back-button");
+const reviewSubmitButton = document.querySelector("#review-submit-button");
 
 const questionText = document.querySelector("#question-text");
 const optionsContainer = document.querySelector("#options-container");
@@ -31,6 +36,11 @@ let userAnswers = [];
 let timeLeft = 300; //5 minutes
 let timerInterval = null;
 let assessmentStarted = false;
+
+function animateAssessmentScreen(screen) {
+    screen.classList.remove("screen-enter");
+    requestAnimationFrame(() => screen.classList.add("screen-enter"));
+}
 
 function showConfirmationCard({
     title,
@@ -120,7 +130,9 @@ function startAssessment() {
     document.querySelector("#assessment-subtitle").textContent = "Timed skill assessment";
     setupScreen.hidden = true;
     resultsScreen.hidden = true;
+    reviewScreen.hidden = true;
     questionScreen.hidden = false;
+    animateAssessmentScreen(questionScreen);
     examSidebar.hidden = false;
     renderQuestion();
     renderQuestionNavigation();
@@ -164,11 +176,62 @@ function renderQuestionNavigation() {
         if (index === currentQuestionIndex) button.classList.add("current");
         if (userAnswers[index] !== null) button.classList.add("answered");
         button.addEventListener("click", () => {
-            currentQuestionIndex = index;
-            renderQuestion();
+            goToQuestion(index);
         });
         questionNumbers.appendChild(button);
     });
+}
+
+function showAnswerReview() {
+    questionScreen.hidden = true;
+    reviewScreen.hidden = false;
+
+    const answeredCount = userAnswers.filter(answer => answer !== null).length;
+    const unansweredCount = userAnswers.length - answeredCount;
+    document.querySelector("#review-skill-label").textContent =
+        questionBank[selectedSkill].title;
+    reviewSummary.textContent =
+        `${answeredCount} of ${userAnswers.length} answered` +
+        (unansweredCount ? ` · ${unansweredCount} unanswered` : " · All questions answered");
+
+    reviewQuestionList.innerHTML = "";
+    currentQuestions.forEach((question, index) => {
+        const answer = userAnswers[index];
+        const item = document.createElement("article");
+        item.className = `review-question ${answer === null ? "unanswered" : "answered"}`;
+
+        const heading = document.createElement("h3");
+        heading.textContent = `Question ${index + 1}`;
+
+        const prompt = document.createElement("p");
+        prompt.className = "review-question-prompt";
+        prompt.textContent = question.question;
+
+        const response = document.createElement("p");
+        response.className = "review-question-answer";
+        response.textContent = answer === null
+            ? "Not answered"
+            : `Your answer: ${question.options[answer]}`;
+
+        const editButton = document.createElement("button");
+        editButton.type = "button";
+        editButton.className = "review-edit-button";
+        editButton.textContent = "Change answer";
+        editButton.setAttribute("aria-label", `Change answer to question ${index + 1}`);
+        editButton.addEventListener("click", () => goToQuestion(index, true));
+
+        item.append(heading, prompt, response, editButton);
+        reviewQuestionList.appendChild(item);
+    });
+    animateAssessmentScreen(reviewScreen);
+}
+
+function goToQuestion(index, shouldAnimate = false) {
+    currentQuestionIndex = index;
+    reviewScreen.hidden = true;
+    questionScreen.hidden = false;
+    renderQuestion();
+    if (shouldAnimate) animateAssessmentScreen(questionScreen);
 }
 
 function startTimer() {
@@ -208,8 +271,7 @@ function submitAssessment(timeExpired = false) {
         ).length;
 
         // Take the user to the first unanswered question
-        currentQuestionIndex = firstUnansweredIndex;
-        renderQuestion();
+        goToQuestion(firstUnansweredIndex);
 
         showConfirmationCard({
             title: "Questions unanswered",
@@ -225,6 +287,7 @@ function submitAssessment(timeExpired = false) {
 
 function showResults() {
     questionScreen.hidden = true;
+    reviewScreen.hidden = true;
     examSidebar.hidden = true;
     resultsScreen.hidden = false;
 
@@ -234,7 +297,39 @@ function showResults() {
     const percentage = Math.round((correctCount / currentQuestions.length) * 100);
 
     document.querySelector("#result-skill-label").textContent = questionBank[selectedSkill].title;
-    document.querySelector("#result-score").textContent = `${correctCount}/${currentQuestions.length} (${percentage}%)`;
+    const resultCelebration = document.querySelector("#result-celebration");
+    const resultHeading = document.querySelector("#result-heading");
+    const resultKicker = document.querySelector("#result-kicker");
+    const resultBadge = document.querySelector("#result-badge");
+    const resultScore = document.querySelector("#result-score");
+    const scoreRing = document.querySelector("#result-score-ring");
+    resultCelebration.classList.remove("excellent", "good", "keep-going");
+
+    if (percentage >= 80) {
+        resultCelebration.classList.add("excellent");
+        resultKicker.textContent = "BRILLIANT WORK";
+        resultHeading.textContent = "You nailed it!";
+        resultBadge.textContent = percentage === 100 ? "Qwizset Pro" : "On a Roll";
+    } else if (percentage >= 50) {
+        resultCelebration.classList.add("good");
+        resultKicker.textContent = "GREAT PROGRESS";
+        resultHeading.textContent = "You're getting there!";
+        resultBadge.textContent = "Skill Builder";
+    } else {
+        resultCelebration.classList.add("keep-going");
+        resultKicker.textContent = "EVERY TRY COUNTS";
+        resultHeading.textContent = "Keep building your skills!";
+        resultBadge.textContent = "Keep Growing";
+    }
+
+    scoreRing.style.setProperty("--score-progress", `${percentage}%`);
+    scoreRing.setAttribute(
+        "aria-label",
+        `Assessment score: ${percentage} percent, ${correctCount} of ${currentQuestions.length} correct`
+    );
+    animateResultScore(resultScore, percentage);
+    document.querySelector("#result-correct-count").textContent =
+        `${correctCount} of ${currentQuestions.length} questions correct`;
     document.querySelector("#result-message").textContent =
         percentage >= 80 ? "Strong work. Keep building on what you know." :
         percentage >= 50 ? "Good effort. Review the explanations and keep practising." :
@@ -257,10 +352,38 @@ function showResults() {
     });
 }
 
+function animateResultScore(scoreElement, targetScore) {
+    const prefersReducedMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    if (prefersReducedMotion) {
+        scoreElement.textContent = `${targetScore}%`;
+        return;
+    }
+
+    const duration = 1000;
+    const startTime = performance.now();
+
+    function updateScore(currentTime) {
+        const progress = Math.min((currentTime - startTime) / duration, 1);
+        const easedProgress = 1 - (1 - progress) ** 3;
+        scoreElement.textContent = `${Math.round(targetScore * easedProgress)}%`;
+
+        if (progress < 1) {
+            requestAnimationFrame(updateScore);
+        }
+    }
+
+    scoreElement.textContent = "0%";
+    requestAnimationFrame(updateScore);
+}
+
 function retakeAssessment() {
     clearInterval(timerInterval);
     setupScreen.hidden = false;
     resultsScreen.hidden = true;
+    reviewScreen.hidden = true;
     questionScreen.hidden = true;
     examSidebar.hidden = true;
     assessmentStarted = false;
@@ -288,10 +411,17 @@ nextButton.addEventListener("click", () => {
         currentQuestionIndex += 1;
         renderQuestion();
     } else {
-        requestSubmissionConfirmation();
+        showAnswerReview();
     }
 });
 submitButton.addEventListener("click", requestSubmissionConfirmation);
+reviewBackButton.addEventListener("click", () => {
+    reviewScreen.hidden = true;
+    questionScreen.hidden = false;
+    renderQuestion();
+    animateAssessmentScreen(questionScreen);
+});
+reviewSubmitButton.addEventListener("click", requestSubmissionConfirmation);
 retakeButton.addEventListener("click", retakeAssessment);
 
 function requestSubmissionConfirmation() {
@@ -306,4 +436,5 @@ function requestSubmissionConfirmation() {
     });
 }
 
+animateAssessmentScreen(setupScreen);
 loadQuestionBank();

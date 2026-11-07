@@ -81,15 +81,50 @@
           </div>
         </div>
 
+        <div id="review-screen" hidden>
+          <div class="question-info">
+            <span>REVIEW YOUR ANSWERS</span>
+            <span id="review-skill-label"></span>
+          </div>
+          <h2 class="question-text">Check your answers before submitting</h2>
+          <p class="review-instructions">
+            Select a question to return to it and change your answer.
+          </p>
+          <div class="review-summary" id="review-summary"></div>
+          <div class="review-question-list" id="review-question-list"></div>
+          <div class="question-actions review-actions">
+            <button class="previous-btn" id="review-back-button" type="button">
+              Back to Questions
+            </button>
+            <button class="next-btn" id="review-submit-button" type="button">
+              Submit Assessment
+            </button>
+          </div>
+        </div>
+
         <div id="results-screen" hidden>
           <div class="question-info">
             <span>ASSESSMENT COMPLETE</span>
             <span id="result-skill-label"></span>
           </div>
-          <h2 class="question-text" id="result-heading">Your Results</h2>
-          <div class="result-summary">
-            <p class="result-score" id="result-score"></p>
-            <p id="result-message"></p>
+          <div class="result-celebration" id="result-celebration">
+            <span class="result-confetti" aria-hidden="true"></span>
+            <span class="result-kicker" id="result-kicker">ASSESSMENT COMPLETE</span>
+            <span class="result-badge" id="result-badge"></span>
+            <h2 class="result-heading" id="result-heading">Your Results</h2>
+            <div
+              class="result-score-ring"
+              id="result-score-ring"
+              role="img"
+              aria-label="Assessment score"
+            >
+              <div class="result-score-center">
+                <p class="result-score" id="result-score"></p>
+                <span>YOUR SCORE</span>
+              </div>
+            </div>
+            <p class="result-correct-count" id="result-correct-count"></p>
+            <p class="result-message" id="result-message"></p>
           </div>
           <div id="answer-review"></div>
           <div class="question-actions">

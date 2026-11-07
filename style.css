@@ -825,3 +825,112 @@ html {
   outline: 3px solid var(--aqua);
   outline-offset: 3px;
 }
+
+/* HOMEPAGE ENTRANCE AND SCROLL REVEALS */
+.hero-content > * {
+  animation: hero-rise 0.65s both;
+}
+
+.hero-content > :nth-child(1) {
+  animation-delay: 80ms;
+}
+
+.hero-content > :nth-child(2) {
+  animation-delay: 160ms;
+}
+
+.hero-content > :nth-child(3) {
+  animation-delay: 240ms;
+}
+
+.hero-content > :nth-child(4) {
+  animation-delay: 320ms;
+}
+
+.hero-image {
+  animation: hero-image-enter 0.8s 180ms both;
+}
+
+.reveal-ready .scroll-reveal:not(.is-visible) {
+  opacity: 0;
+  transform: translateY(22px);
+}
+
+.scroll-reveal {
+  transition:
+    opacity 0.65s ease,
+    transform 0.65s ease;
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.scroll-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.features-container .feature-card:nth-child(2),
+.steps-container .step-card:nth-child(2) {
+  --reveal-delay: 100ms;
+}
+
+.features-container .feature-card:nth-child(3),
+.steps-container .step-card:nth-child(3) {
+  --reveal-delay: 200ms;
+}
+
+.courses-container .course-card:nth-child(2) {
+  --reveal-delay: 70ms;
+}
+
+.courses-container .course-card:nth-child(3) {
+  --reveal-delay: 140ms;
+}
+
+.courses-container .course-card:nth-child(4) {
+  --reveal-delay: 210ms;
+}
+
+.courses-container .course-card:nth-child(5) {
+  --reveal-delay: 280ms;
+}
+
+.feature-card.scroll-reveal.is-visible:hover,
+.course-card.scroll-reveal.is-visible:hover,
+.step-card.scroll-reveal.is-visible:hover {
+  transform: translateY(-6px);
+}
+
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hero-image-enter {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-content > *,
+  .hero-image {
+    animation: none;
+  }
+
+  .scroll-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
