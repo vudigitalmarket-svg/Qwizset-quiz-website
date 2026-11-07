@@ -122,6 +122,27 @@
       </aside>
     </main>
 
+    <dialog
+      class="confirmation-dialog"
+      id="confirmation-dialog"
+      aria-labelledby="confirmation-title"
+      aria-describedby="confirmation-message"
+    >
+      <div class="confirmation-card">
+        <span class="confirmation-label">QWIZSET</span>
+        <h2 id="confirmation-title"></h2>
+        <p id="confirmation-message"></p>
+        <form method="dialog" class="confirmation-actions">
+          <button class="confirmation-cancel" id="confirmation-cancel" value="cancel">
+            No
+          </button>
+          <button class="confirmation-accept" id="confirmation-accept" value="confirm">
+            Yes
+          </button>
+        </form>
+      </div>
+    </dialog>
+
     <script src="practice.js"></script>
   </body>
 </html>

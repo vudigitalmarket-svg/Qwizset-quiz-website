@@ -17,6 +17,11 @@ const previousButton = document.querySelector("#previous-question");
 const nextButton = document.querySelector("#next-question");
 const submitButton = document.querySelector("#submit-assessment");
 const retakeButton = document.querySelector("#retake-assessment");
+const confirmationDialog = document.querySelector("#confirmation-dialog");
+const confirmationTitle = document.querySelector("#confirmation-title");
+const confirmationMessage = document.querySelector("#confirmation-message");
+const confirmationCancel = document.querySelector("#confirmation-cancel");
+const confirmationAccept = document.querySelector("#confirmation-accept");
 
 let questionBank = {};
 let selectedSkill = "";
@@ -26,6 +31,29 @@ let userAnswers = [];
 let timeLeft = 300; //5 minutes
 let timerInterval = null;
 let assessmentStarted = false;
+
+function showConfirmationCard({
+    title,
+    message,
+    confirmText = "OK",
+    cancelText = "No",
+    showCancel = false
+}) {
+    confirmationTitle.textContent = title;
+    confirmationMessage.textContent = message;
+    confirmationAccept.textContent = confirmText;
+    confirmationCancel.textContent = cancelText;
+    confirmationCancel.hidden = !showCancel;
+
+    return new Promise(resolve => {
+        confirmationDialog.addEventListener(
+            "close",
+            () => resolve(confirmationDialog.returnValue === "confirm"),
+            { once: true }
+        );
+        confirmationDialog.showModal();
+    });
+}
 
 async function loadQuestionBank() {
     try {
@@ -74,7 +102,10 @@ function highlightSelectedSkill() {
 
 function startAssessment() {
     if (!selectedSkill || !questionBank[selectedSkill]) {
-        alert("Please choose a skill area first.");
+        showConfirmationCard({
+            title: "Choose a skill",
+            message: "Please choose a skill area first."
+        });
         return;
     }
 
@@ -161,6 +192,9 @@ function updateTimerDisplay() {
 
 function submitAssessment(timeExpired = false) {
     if (!assessmentStarted) return;
+    if (timeExpired && confirmationDialog.open) {
+        confirmationDialog.close("cancel");
+    }
 
     // Check for unanswered questions
     const firstUnansweredIndex = userAnswers.findIndex(
@@ -173,14 +207,14 @@ function submitAssessment(timeExpired = false) {
             answer => answer === null
         ).length;
 
-        alert(
-            `You have ${unansweredCount} unanswered question(s). Please complete them before submitting.`
-        );
-
         // Take the user to the first unanswered question
         currentQuestionIndex = firstUnansweredIndex;
         renderQuestion();
 
+        showConfirmationCard({
+            title: "Questions unanswered",
+            message: `You have ${unansweredCount} unanswered question(s). Please complete them before submitting.`
+        });
         return;
     }
 
@@ -254,14 +288,22 @@ nextButton.addEventListener("click", () => {
         currentQuestionIndex += 1;
         renderQuestion();
     } else {
-        const unanswered = userAnswers.filter(answer => answer === null).length;
-        const message = unanswered
-            ? `You still have ${unanswered} unanswered question(s). You can go back and answer them, or submit now.`
-            : "You have reached the end of the assessment. Submit your answers now?";
-        if (confirm(message)) submitAssessment();
+        requestSubmissionConfirmation();
     }
 });
-submitButton.addEventListener("click", () => submitAssessment());
+submitButton.addEventListener("click", requestSubmissionConfirmation);
 retakeButton.addEventListener("click", retakeAssessment);
+
+function requestSubmissionConfirmation() {
+    showConfirmationCard({
+        title: "Submit assessment?",
+        message: "Are you sure you want to submit your assessment?",
+        confirmText: "Yes",
+        cancelText: "No",
+        showCancel: true
+    }).then(confirmed => {
+        if (confirmed) submitAssessment();
+    });
+}
 
 loadQuestionBank();
