@@ -148,8 +148,7 @@ function startTimer() {
         updateTimerDisplay();
         if (timeLeft <= 0) {
             clearInterval(timerInterval);
-            alert("Time is up. Your assessment will be submitted.");
-            submitAssessment();
+            submitAssessment(true);
         }
     }, 1000);
 }
@@ -160,7 +159,7 @@ function updateTimerDisplay() {
     timerDisplay.textContent = `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
 }
 
-function submitAssessment() {
+function submitAssessment(timeExpired = false) {
     if (!assessmentStarted) return;
 
     // Check for unanswered questions
@@ -169,7 +168,7 @@ function submitAssessment() {
     );
 
     // Block submission if any question is unanswered
-    if (firstUnansweredIndex !== -1) {
+    if (!timeExpired && firstUnansweredIndex !== -1) {
         const unansweredCount = userAnswers.filter(
             answer => answer === null
         ).length;
@@ -185,7 +184,6 @@ function submitAssessment() {
         return;
     }
 
-    // Submit only when every question has been answered
     clearInterval(timerInterval);
     assessmentStarted = false;
     showResults();
@@ -263,7 +261,7 @@ nextButton.addEventListener("click", () => {
         if (confirm(message)) submitAssessment();
     }
 });
-submitButton.addEventListener("click", submitAssessment);
+submitButton.addEventListener("click", () => submitAssessment());
 retakeButton.addEventListener("click", retakeAssessment);
 
 loadQuestionBank();
