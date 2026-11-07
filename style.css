@@ -537,14 +537,23 @@ html {
   gap: 18px;
 }
 
-.social-links img {
+.social-links svg {
   width: 20px;
   height: 20px;
-  object-fit: contain;
   transition: transform 0.3s ease;
 }
 
-.social-links a:hover img {
+.social-links a {
+  display: inline-flex;
+  color: #b8cccc;
+  transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+  color: var(--aqua);
+}
+
+.social-links a:hover svg {
   transform: translateY(-4px);
 }
 
